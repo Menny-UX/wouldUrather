@@ -2,7 +2,7 @@ import {SET_AUTHERUSER,
     Logout_USER
 } from '../actions/users';
 
-export default function authUser (state='' , action){
+export default function authUser (state='mennaElboulaki' , action){
     switch (action.type) {
         case SET_AUTHERUSER :
             return action.UId;

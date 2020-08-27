@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Login from './Login';
-import Home from './Home';
+import MainBody from './MainBody';
 
 class App extends Component {
   
@@ -22,7 +22,7 @@ class App extends Component {
     }
 
     return (<Fragment>  
-      { !authUser? <Login/> : <Home/>} 
+      { !authUser? <Login/> : <MainBody/>} 
         </Fragment>
     );
 
