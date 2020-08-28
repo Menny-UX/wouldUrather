@@ -14,17 +14,15 @@ function addQuestion(question){
     }
 }
 
-function addAnswer(answer) {
+function addAnswer(answerInfo) {
 	return {
 		type: ADD_ANSWER,
-		answer
+		answerInfo
 	};
 }
 
-export function handleAddQuestion (optionOne ,optionTwo ) {
+export function handleAddQuestion (optionOne ,optionTwo, authedUser) {
     return (dispatch, getState) =>{
-        const { authedUser } = getState();
-
         dispatch(showLoading());
 
         return saveQuestion({
@@ -37,18 +35,16 @@ export function handleAddQuestion (optionOne ,optionTwo ) {
     }
 }
 
-export function handleAddAnswer (qID ,answer ) {
+export function handleAddAnswer (qid ,answer ,authedUser) {
     return (dispatch, getState) =>{
-        const { authedUser } = getState();
-
         dispatch(showLoading());
 
         return saveQuestionAnswer({
-            qID,
+            qid,
             answer,
             authedUser
         })
-        .then((answer)=> dispatch(addAnswer(answer)))
+        .then(()=> dispatch(addAnswer({qid, answer, authedUser })))
         .then(()=> dispatch(hideLoading()))
     }
 }

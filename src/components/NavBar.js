@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {Avatar, Button} from '@material-ui/core';
+import {logoutUser} from '../actions/users';
 
 class Navbar extends Component {
+    
     render(){
         const { authUser, users} = this.props;
         const currentUser = users[authUser];
-        console.log('userrrrrrr',currentUser)
+
+        const handleLogOut = () => {
+            const {dispatch} = this.props;
+            dispatch(logoutUser())
+        }
+
         return ( <div className="Navbar">
             <div className="Nav-items-wrapper">
                 <NavLink  to="/" exact
@@ -36,7 +43,9 @@ class Navbar extends Component {
                             <Avatar alt={currentUser.name} src={currentUser.avatarURL} />
                             <h5 className="current-user-text"> {currentUser.name} </h5>
                         </div>
-                        <Button variant="outlined" style={{color:"white"}}>LogOut</Button>
+                        <Button variant="outlined" style={{color:"white"}} onClick={handleLogOut}>
+                            LogOut
+                        </Button>
                     </div>
             }
         </div> );

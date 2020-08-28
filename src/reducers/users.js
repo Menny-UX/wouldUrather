@@ -21,14 +21,14 @@ export default function users (state =[] , action){
                 }
             };
         case ADD_ANSWER: 
-        const { qID, answer, authedUser } = action.answerInfo;
-            return {
+        const { qid, answer, authedUser } = action.answerInfo;
+        return {
                 ...state,
                 [authedUser]:{
                     ...state[authedUser],
                     answers: {
                         ...state[authedUser].answers,
-                        [qID] : answer
+                        [qid] : answer
                     }
                 }
             };

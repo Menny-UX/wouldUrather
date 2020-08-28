@@ -5,9 +5,11 @@ import Button from '@material-ui/core/Button';
 import { setAuthedUser } from '../actions/users';
 
 class Login extends Component {
+
     state = {
         selectedUser : ''
     }
+
     render(){
         const { users } = this.props;
 
@@ -63,7 +65,6 @@ class Login extends Component {
 }
 
 function mapStateToProps({ users }) {
-    console.log('mapStateToProps',users)
     return {
 		users
 	};

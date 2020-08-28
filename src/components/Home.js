@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
+import { connect } from 'react-redux';
+import QuestionBrief from './QuestionBrief';
 import {AppBar, Tabs, Tab, Typography,Box} from '@material-ui/core';
 
 function TabPanel(props) {
@@ -42,7 +44,25 @@ class Home extends Component {
         value : 0
     }
     render(){
-
+        const {questions, authUser, users} = this.props;
+        let answeredQues = [];
+        let notAnsweredQues = [];
+        
+        Object.keys(questions).forEach((id)=>{
+            const ques = questions[id];
+            if( 
+                (ques.optionOne && ques.optionOne.votes.includes(authUser))  ||
+                (ques.optionTwo && ques.optionTwo.votes.includes(authUser))
+            ){
+                answeredQues.push(ques);
+            }
+            else{
+                notAnsweredQues.push(ques);
+            }
+        })
+        console.log('answeredQues :',answeredQues)
+        console.log('notAnsweredQues :',notAnsweredQues)
+        
         const handleChange = (event, newValue) => {
             this.setState({value: newValue});
         };
@@ -62,8 +82,8 @@ class Home extends Component {
                 variant="fullWidth"
                 aria-label="full width tabs example"
                 >
-                <Tab label="Not Answered" {...a11yProps(0)} />
-                <Tab label="Answered" {...a11yProps(1)} />
+                <Tab label="Answered" {...a11yProps(0)} />
+                <Tab label="Not Answered" {...a11yProps(1)} />
                 </Tabs>
             </AppBar>
                 <SwipeableViews
@@ -72,10 +92,18 @@ class Home extends Component {
                     onChangeIndex={handleChangeIndex}
                 >
                     <TabPanel value={this.state.value} index={0} >
-                    Item One
+                        <div className="List_container">
+                        {
+                            answeredQues.map((q)=> <QuestionBrief question={q} auther={users[q.author]}/>)
+                        }   
+                        </div>
                     </TabPanel>
                     <TabPanel value={this.state.value} index={1} >
-                    Item Two
+                        <div className="List_container">
+                        {
+                            notAnsweredQues.map((q)=> <QuestionBrief question={q} auther={users[q.author]}/>)
+                        }
+                        </div>
                     </TabPanel>
                 </SwipeableViews>
             </div>
@@ -83,5 +111,11 @@ class Home extends Component {
         );
     }
 }
- 
-export default Home;
+function mapStateToProps({ authUser, questions ,users}) {
+	return {
+		authUser,
+        questions,
+        users
+	};
+}
+export default connect(mapStateToProps)(Home);
