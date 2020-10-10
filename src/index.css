@@ -100,7 +100,7 @@ a{
   align-items: center;
 }
 .home-container{
-  width: 45%;
+  width: 46%;
   background-color: aliceblue;
   box-shadow: 2px 3px 6px #d5d5d5;
   border-radius: 6px;
@@ -178,9 +178,11 @@ a{
     padding: 10px;
     margin: 14px;
     justify-content: space-evenly;
-    background-color: aliceblue;
     border-radius: 14px;
-    box-shadow: 2px 3px 4px #add8e685;
+  }
+  .user_statistics .question_description{
+    background-color: aliceblue; 
+     box-shadow: 2px 3px 4px #add8e685;
   }
 .question_description .auther_avatar{
   display: flex;
@@ -193,6 +195,7 @@ a{
   }
   .question_description .MuiDivider-root{
     margin: 0 26px 0 0;
+    background-color: transparent;
   }
   .question_snap_view{
     margin: 10px 30px 10px 0;
@@ -250,8 +253,11 @@ a{
     z-index: 20;
     color: white;
     font-weight: bolder;
-    width: 100%;
-    text-align: center;
+    width: 90%;
+    padding:0 10px;
+  }
+  .vote_description:nth-child(2){
+    text-align: right;
   }
   .selected_vote{
     width: 32px;
@@ -265,3 +271,13 @@ a{
     text-align: center;
     display: none;
   }
+  .user_statistics{
+    width: 46%;
+  }
+  .login_Wrapper .MuiFormControl-root {
+    width: 100%;
+    margin: 10% 0;
+  }
+  .question_details {
+    width: 45%;
+}

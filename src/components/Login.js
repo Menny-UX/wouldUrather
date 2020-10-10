@@ -11,13 +11,15 @@ class Login extends Component {
     }
 
     render(){
-        const { users } = this.props;
-
+        // console.log( 'history.....' , this.props);
+        const { users, history } = this.props;
+        
         const handleChange = (event) => {
             this.setState({
                 selectedUser : event.target.value
             })
         };
+
         const handleSubmit = (e) => {
             e.preventDefault();
             
@@ -25,6 +27,7 @@ class Login extends Component {
             const user = this.state.selectedUser;
 
             dispatch(setAuthedUser(user));
+            history.push('./')
         };
 
         return ( 
@@ -50,7 +53,7 @@ class Login extends Component {
                     >
                     {
                             Object.keys(users).map((id)=>{
-                                return <MenuItem value={id}> {users[id].name} </MenuItem>
+                                return <MenuItem key={id} value={id}> {users[id].name} </MenuItem>
                             })
                     }
                 </Select>

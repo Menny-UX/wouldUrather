@@ -14,7 +14,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: 'https://thegreattransition.github.io/group24-18iJt7/assets/images/profile1.png',
+    avatarURL: 'https://img.pngio.com/png-avatar-108-images-in-collection-page-3-png-avatar-300_300.png',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: 'https://img.pngio.com/png-avatar-108-images-in-collection-page-3-png-avatar-300_300.png',
+    avatarURL: 'https://thegreattransition.github.io/group24-18iJt7/assets/images/profile1.png',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -172,7 +172,6 @@ export function _saveQuestion (question) {
 }
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
-  console.log('----',authedUser, qid, answer)
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {

@@ -5,26 +5,32 @@ import {Avatar, Typography, Divider} from '@material-ui/core';
 class LeaderBoard extends Component {
     render(){
         const {users} = this.props;
-    
+        const usersArr = Object.values(users);
+
+        const sortedUses = usersArr.sort((a,b) => 
+          ((b.questions.length + Object.keys( b.answers).length)
+          -  (a.questions.length + Object.keys( a.answers).length))  
+        )
+
         return ( <div className="center-item">
                     <div className="user_statistics">
                 {
-                    Object.keys(users).map((id)=> {
-                        return <div className="question_description">
+                    sortedUses.map((user)=> {
+                        return <div className="question_description" key={user.name}>
                         <div className="auther_avatar">
-                            <Avatar  alt={users[id].name} src={users[id].avatarURL}/>
+                            <Avatar  alt={user.name} src={user.avatarURL}/>
                         </div>
                         <Divider orientation="vertical" flexItem />
                         <div className="question_statistics">
                             <Typography variant="h6" color="primary">
-                                {users[id].name}
+                                {user.name}
                             </Typography>
                             <div className="question-statistics-details">
                                 <div className="statistics-title">
                                     Answered Questions 
                                 </div>
                                 <div className="statistics-value">
-                                   {users[id].answers.length || "0"}
+                                   {Object.keys(user.answers).length || "0"}
                                 </div>
                             </div>
                             <div className="question-statistics-details">
@@ -32,7 +38,7 @@ class LeaderBoard extends Component {
                                     Asked Questions 
                                 </div>
                                 <div className="statistics-value">
-                                   {users[id].questions.length || "0"}
+                                   {user.questions.length || "0"}
                                 </div>
                             </div>
                         </div>
@@ -43,7 +49,7 @@ class LeaderBoard extends Component {
                                 </Typography>
                                 <Divider flexItem />
                                 <div className="user-score">
-                                    { users[id] && users[id].questions.length + Object.keys(users[id].answers).length }
+                                    { user && user.questions.length + Object.keys(user.answers).length }
                                 </div>
                             </div>
                         </div>}

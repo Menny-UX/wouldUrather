@@ -9,6 +9,8 @@ class NewQuestion extends Component {
         optionTwoText: ''
     }
     render(){
+        const {history} = this.props;
+
         const handleSubmit = ()=>{
             const {dispatch} = this.props;
             dispatch(handleAddQuestion(
@@ -16,6 +18,7 @@ class NewQuestion extends Component {
                 this.state.optionTwoText,
                 this.props.authUser
             ))
+            history.push('/')
         }
         const handleChange = (e)=>{
             const name = e.target.name;

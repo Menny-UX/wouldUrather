@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { connect } from 'react-redux';
 import QuestionBrief from './QuestionBrief';
-import {AppBar, Tabs, Tab, Typography,Box} from '@material-ui/core';
+import {AppBar, Typography, Tabs, Tab,Box} from '@material-ui/core';
+// import TypographyNew from './typography';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -18,7 +19,7 @@ function TabPanel(props) {
       >
         {value === index && (
           <Box p={3}>
-            <Typography>{children}</Typography>
+            <Typography component={'div'}>{children}</Typography>
           </Box>
         )}
       </div>
@@ -41,7 +42,7 @@ function TabPanel(props) {
 
 class Home extends Component {
     state = {
-        value : 0
+        value : 1
     }
     render(){
         const {questions, authUser, users} = this.props;
@@ -59,9 +60,11 @@ class Home extends Component {
             else{
                 notAnsweredQues.push(ques);
             }
+
         })
-        console.log('answeredQues :',answeredQues)
-        console.log('notAnsweredQues :',notAnsweredQues)
+
+        notAnsweredQues.sort((a,b) => (b.timestamp - a.timestamp))
+        answeredQues.sort((a,b) => (b.timestamp - a.timestamp))
         
         const handleChange = (event, newValue) => {
             this.setState({value: newValue});
@@ -94,14 +97,14 @@ class Home extends Component {
                     <TabPanel value={this.state.value} index={0} >
                         <div className="List_container">
                         {
-                            answeredQues.map((q)=> <QuestionBrief question={q} auther={users[q.author]}/>)
+                            answeredQues.map((q,indx)=> <QuestionBrief key={`${q.auther}-${indx}`} question={q} auther={users[q.author]}/>)
                         }   
                         </div>
                     </TabPanel>
                     <TabPanel value={this.state.value} index={1} >
                         <div className="List_container">
                         {
-                            notAnsweredQues.map((q)=> <QuestionBrief question={q} auther={users[q.author]}/>)
+                            notAnsweredQues.map((q,indx)=> <QuestionBrief key={`${q.auther}-${indx}`} question={q} auther={users[q.author]}/>)
                         }
                         </div>
                     </TabPanel>
