@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TextField,Typography, Button } from '@material-ui/core';
 import { handleAddQuestion } from '../actions/questions';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 class NewQuestion extends Component {
     state = {
@@ -70,4 +71,4 @@ function mapStateToProps({ authUser }) {
 }
  
  
-export default connect(mapStateToProps)(NewQuestion);
+export default withRouter(connect(mapStateToProps)(NewQuestion));

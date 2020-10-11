@@ -11,8 +11,8 @@ class Login extends Component {
     }
 
     render(){
-        // console.log( 'history.....' , this.props);
         const { users, history } = this.props;
+        const {from} = this.props.location.state || {from: {pathname: '/'}}
         
         const handleChange = (event) => {
             this.setState({
@@ -27,7 +27,7 @@ class Login extends Component {
             const user = this.state.selectedUser;
 
             dispatch(setAuthedUser(user));
-            history.push('./')
+            history.push(from)
         };
 
         return ( 

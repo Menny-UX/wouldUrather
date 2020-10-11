@@ -37,7 +37,7 @@ const QuestionStatistic = ({question ,auther ,user}) => {
                                 </Typography>
                                 <Typography variant="subtitle1" color="primary" 
                                 className="vote_description" >
-                                {`${question.optionOne.votes.length * 100 / totalVotes} %`}
+                                {`${Math.round(question.optionOne.votes.length * 100 / totalVotes)} %`}
                                 </Typography>
                             </div>
                             <div className="selected_vote">
@@ -59,7 +59,7 @@ const QuestionStatistic = ({question ,auther ,user}) => {
                                 </Typography>
                                 <Typography variant="subtitle1" color="primary" 
                                 className="vote_description" >
-                                {`${question.optionTwo.votes.length * 100 / totalVotes} %`}
+                                {`${Math.round(question.optionTwo.votes.length * 100 / totalVotes)} %`}
                                 </Typography>
                             </div>
                             <div className="selected_vote">

@@ -5,6 +5,8 @@ import QuestionPoll from './QuestionPoll';
 import QuestionStatistic from './QuestionStatistic';
 import {handleAddAnswer} from '../actions/questions';
 
+import {withRouter} from 'react-router-dom';
+
 class QuestionPage extends Component {
     
     render(){
@@ -45,4 +47,4 @@ function mapStateToProps({ authUser, questions ,users}) {
         users
 	};
 }
-export default connect(mapStateToProps)(QuestionPage);
+export default withRouter(connect(mapStateToProps)(QuestionPage));
