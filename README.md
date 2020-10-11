@@ -7,13 +7,14 @@ This project contains mainly 3 pages :
 
 ## Usage
 
+* first clone git repo https://github.com/Menny-UX/wouldUrather.git
 * install all project dependencies with `yarn`
 * start the development server with `yarn start`
 
 ## Project structure
 ```bash
 ├── README.md - This file.
-├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
+├── package.json 
 ├── public
 └── src
     ├── actions # defining actions that can be preformed.
@@ -21,14 +22,18 @@ This project contains mainly 3 pages :
     ├── middleware # called before dispaching actions example [thunk for asyn actions, logger ]
     ├── mockingApi # serving as a mocking server
     ├── components # all components.
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    ├── index.css # Global styles.
+    └── index.js # It is used for DOM rendering only.
 ```
 
 
 
 ## Tools and technologies used
-React
-Redux
-MaterialUI
+`MaterialUI`   
+Styling Library
+`React`        
+UI Library For managing component render 
+`Redux`       
+Library for managing the state (central store)
+Single sourse of truth
 
